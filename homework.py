@@ -5,7 +5,9 @@ from aiogram import Bot, Dispatcher, F, types
 from aiogram.filters import CommandStart
 from aiohttp import web
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 if not BOT_TOKEN:
@@ -20,7 +22,8 @@ dp = Dispatcher()
 async def cmd_start(message: types.Message):
     """Обработчик команды /start. Приветствует пользователя."""
     await message.answer(
-        f"Привет, {message.from_user.full_name}! Я эхо-бот. Напиши мне что-нибудь."
+        f"Привет, {message.from_user.full_name}! "
+        "Я эхо-бот. Напиши мне что-нибудь."
     )
 
 
@@ -53,7 +56,9 @@ async def main():
         site = web.TCPSite(runner, "0.0.0.0", 8080)
         await site.start()
 
-        logging.info(f"Вебхук запущен. Ожидаю запросы на {webhook_url}")
+        logging.info(
+            f"Вебхук запущен. Ожидаю запросы на {webhook_url}"
+        )
         while True:
             await asyncio.sleep(3600)
     else:
