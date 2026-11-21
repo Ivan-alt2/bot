@@ -43,7 +43,7 @@ async def handle_webhook(request: web.Request):
 async def main():
     """
     Точка входа в приложение.
-    Запускает либо вебхук, либо long-polling в зависимости от переменных окружения.
+    Запускает либо вебхук, либо long-polling от переменных окружения.
     """
     webhook_url = os.environ.get("WEBHOOK_URL")
     if webhook_url:
